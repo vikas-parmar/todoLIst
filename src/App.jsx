@@ -1,3 +1,4 @@
+import FilterButton from "./Components/FilterButton";
 import Form from "./Components/Form";
 import Todo from "./Components/Todo"
 
@@ -17,23 +18,9 @@ function App(props) {
     
     <Form />
 
-    <div className="filters-btn-group">
-      <button type="button" className="toggle-btn" aria-pressed="true">
-        <span className="visually-hidden">Show </span>
-        <span>All</span>
-        <span className="visually-hidden"> tasks</span>
-      </button>
-      <button type="button" className="toggle-btn" aria-pressed="false">
-        <span className="visually-hidden">Show </span>
-        <span>Active</span>
-        <span className="visually-hidden"> tasks</span>
-      </button>
-      <button type="button" className="toggle-btn" aria-pressed="false">
-        <span className="visually-hidden">Show </span>
-        <span>Completed</span>
-        <span className="visually-hidden"> tasks</span>
-      </button>
-    </div>
+    <FilterButton />
+    <FilterButton />
+    <FilterButton />
 
     <h2 id="list-heading">3 tasks remaining</h2>
     
