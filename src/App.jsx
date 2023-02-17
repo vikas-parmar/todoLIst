@@ -1,11 +1,13 @@
+import { useState } from "react";
 import FilterButton from "./Components/FilterButton";
 import Form from "./Components/Form";
 import Todo from "./Components/Todo"
 
 
 function App(props) {
-  
-  const taskList = props.tasks.map((task) => (
+  const [tasks, setTasks] = useState(props.tasks);
+
+  const taskList = tasks.map((task) => (
                               <Todo 
                                 id={task.id} 
                                 name={task.name} 
