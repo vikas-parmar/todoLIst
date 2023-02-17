@@ -1,3 +1,4 @@
+import Form from "./Components/Form";
 import Todo from "./Components/Todo"
 
 
@@ -14,22 +15,7 @@ function App(props) {
     <div className="todo--app">
     <h1>TodoMatic</h1>
     
-    <form className='todo--form'>
-      <h2 className="label-wrapper">
-        <label htmlFor="new-todo-input" >
-          What needs to be done?
-        </label>
-      </h2>
-      <input
-        type="text"
-        id="new-todo-input"
-        name="text"
-        autoComplete="off"
-      />
-      <button type="submit" className="btn--primary">
-        Add
-      </button>
-    </form>
+    <Form />
 
     <div className="filters-btn-group">
       <button type="button" className="toggle-btn" aria-pressed="true">
