@@ -1,8 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
+
+
 
 const Form = (props) => {
+    const [name, setName] = useState('Use hooks!');
+    
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (name !== "") {
+          props.addTask(name);
+          setName("");
+        }};
+
+    function handleChange(e) {
+        setName(e.target.value);
+      };
+          
   return (
-    <form className='todo--form'>
+    <form onSubmit={handleSubmit} className='todo--form'>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" >
           What needs to be done?
@@ -13,6 +28,9 @@ const Form = (props) => {
         id="new-todo-input"
         name="text"
         autoComplete="off"
+        placeholder="Add Your ToDos"
+        value={name}
+        onChange={handleChange}
       />
       <button type="submit" className="btn--primary">
         Add

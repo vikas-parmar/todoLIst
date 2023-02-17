@@ -12,11 +12,16 @@ function App(props) {
                                 completed={task.completed} 
                                 key={task.id}
                                 />));
+  
+  function addTask(name) {
+  alert(name);
+  }
+
   return (
     <div className="todo--app">
     <h1>TodoMatic</h1>
     
-    <Form />
+    <Form addTask={addTask} />
 
     <FilterButton />
     <FilterButton />
@@ -34,4 +39,4 @@ function App(props) {
   )
 }
 
-export default App
+export default App;
