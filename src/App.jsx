@@ -1,3 +1,5 @@
+import Todo from "./Components/Todo"
+
 function App() {
 
   return (
@@ -45,54 +47,9 @@ function App() {
       role="list"
       className="todo-list"
       aria-labelledby="list-heading">
-      <li className="todo">
-        <div>
-          <input id="todo-0" type="checkbox" defaultChecked={true} />
-          <label className="todo-label" htmlFor="todo-0">
-            Jogging
-          </label>
-        </div>
-        <div className="btn-group">
-          <button type="button" className="todo-input-btn">
-            Edit <span className="visually-hidden">Jogging</span>
-          </button>
-          <button type="button" className="todo-input-btn">
-            Delete <span className="visually-hidden">Jogging</span>
-          </button>
-        </div>
-      </li>
-      <li className="todo">
-        <div>
-          <input id="todo-1" type="checkbox" />
-          <label className="todo-label" htmlFor="todo-1">
-            Cricket
-          </label>
-        </div>
-        <div className="btn-group">
-          <button type="button" className="todo-input-btn">
-            Edit <span className="visually-hidden">Cricket</span>
-          </button>
-          <button type="button" className="todo-input-btn">
-            Delete <span className="visually-hidden">Cricket</span>
-          </button>
-        </div>
-      </li>
-      <li className="todo">
-        <div>
-          <input id="todo-2" type="checkbox" />
-          <label className="todo-label" htmlFor="todo-2">
-            Sleep
-          </label>
-        </div>
-        <div className="btn-group">
-          <button type="button" className="todo-input-btn">
-            Edit <span className="visually-hidden">Sleep</span>
-          </button>
-          <button type="button" className="todo-input-btn">
-            Delete <span className="visually-hidden">Sleep</span>
-          </button>
-        </div>
-      </li>
+     <Todo />
+     <Todo />
+     <Todo />
     </ul>
   </div>
   )
