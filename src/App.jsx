@@ -1,7 +1,15 @@
 import Todo from "./Components/Todo"
 
-function App() {
 
+function App(props) {
+  
+  const taskList = props.tasks.map((task) => (
+                              <Todo 
+                                id={task.id} 
+                                name={task.name} 
+                                completed={task.completed} 
+                                key={task.id}
+                                />));
   return (
     <div className="todo--app">
     <h1>TodoMatic</h1>
@@ -47,9 +55,7 @@ function App() {
       role="list"
       className="todo-list"
       aria-labelledby="list-heading">
-     <Todo id="todo-0" name="Jogging" completed={true} />
-     <Todo id="todo-1" name="Cricket" completed={false} />
-     <Todo id="todo-2" name="Sleep" completed={false} />
+        {taskList}
     </ul>
   </div>
   )
