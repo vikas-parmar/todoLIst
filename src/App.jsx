@@ -47,9 +47,9 @@ function App() {
       role="list"
       className="todo-list"
       aria-labelledby="list-heading">
-     <Todo />
-     <Todo />
-     <Todo />
+     <Todo id="todo-0" name="Jogging" completed={true} />
+     <Todo id="todo-1" name="Cricket" completed={false} />
+     <Todo id="todo-2" name="Sleep" completed={false} />
     </ul>
   </div>
   )
