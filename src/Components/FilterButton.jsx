@@ -2,7 +2,7 @@ import React from 'react'
 
 const FilterButton = (props) => {
   return (
-    <div className="filters-btn-group">
+    
       <button 
           type="button" 
           className="toggle-btn" 
@@ -13,7 +13,6 @@ const FilterButton = (props) => {
         <span>{props.name}</span>
         <span className="visually-hidden"> tasks</span>
       </button>
-    </div>
   )
 }
 
