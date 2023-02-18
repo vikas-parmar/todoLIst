@@ -20,7 +20,11 @@ const Todo = (props) => {
       <button type="button" className="todo-input-btn">
         Edit <span className="visually-hidden">{props.name}</span>
       </button>
-      <button type="button" className="todo-input-btn">
+      <button 
+        type="button" 
+        className="todo-input-btn"
+        onClick={() => props.deleteTask(props.id)}
+        >
         Delete <span className="visually-hidden">{props.name}</span>
       </button>
     </div>
