@@ -1,11 +1,16 @@
 import React from 'react'
 
-const FilterButton = () => {
+const FilterButton = (props) => {
   return (
     <div className="filters-btn-group">
-      <button type="button" className="toggle-btn" aria-pressed="true">
+      <button 
+          type="button" 
+          className="toggle-btn" 
+          aria-pressed={props.isPressed} 
+          onClick={() => props.setFilter(props.name)}
+        >
         <span className="visually-hidden">Show </span>
-        <span>All</span>
+        <span>{props.name}</span>
         <span className="visually-hidden"> tasks</span>
       </button>
     </div>

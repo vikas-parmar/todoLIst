@@ -4,9 +4,16 @@ import FilterButton from "./Components/FilterButton";
 import Form from "./Components/Form";
 import Todo from "./Components/Todo"
 
+const FILTER_MAP = {
+  All: () => true,
+  Active: (task) => !task.completed,
+  Completed: (task) => task.completed
+};
+const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
+  const [filter, setFilter] = useState('All');
 
   function toggleTaskCompleted(id) {
     const updateTasks = tasks.map((task)=>{
@@ -43,6 +50,15 @@ function App(props) {
                                 deleteTask={deleteTask}
                                 editTask={editTask}
                                 />));
+
+  const filterList = FILTER_NAMES.map((name)=>(
+    <FilterButton 
+      key={name} 
+      name={name}
+      isPressed ={name === filter}
+      setFilter= {setFilter} 
+      />
+  ));
   
   function addTask(name) {
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
@@ -59,9 +75,7 @@ function App(props) {
     
     <Form addTask={addTask} />
 
-    <FilterButton />
-    <FilterButton />
-    <FilterButton />
+    {filterList}
 
     <h2 id="list-heading">{headingText}</h2>
     
