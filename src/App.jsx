@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import FilterButton from "./Components/FilterButton";
 import Form from "./Components/Form";
@@ -11,18 +11,26 @@ const FILTER_MAP = {
 };
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
 function App(props) {
   const [tasks, setTasks] = useState(props.tasks);
   const [filter, setFilter] = useState('All');
 
   function toggleTaskCompleted(id) {
-    const updateTasks = tasks.map((task)=>{
+    const updatedTasks = tasks.map((task)=>{
       if(id === task.id){
         return{...task, completed: !task.completed}
       }
       return task;
     });
-    setTasks(updateTasks);
+    setTasks(updatedTasks);
   }
   
   function deleteTask(id) {
@@ -40,16 +48,18 @@ function App(props) {
     setTasks(editedTaskList);
   }
   
-  const taskList = tasks.map((task) => (
-                              <Todo 
-                                id={task.id} 
-                                name={task.name} 
-                                completed={task.completed} 
-                                key={task.id}
-                                toggleTaskCompleted={toggleTaskCompleted}
-                                deleteTask={deleteTask}
-                                editTask={editTask}
-                                />));
+  const taskList = tasks
+    .filter(FILTER_MAP[filter])
+    .map((task) => (
+      <Todo 
+        id={task.id} 
+        name={task.name} 
+        completed={task.completed} 
+        key={task.id}
+        toggleTaskCompleted={toggleTaskCompleted}
+        deleteTask={deleteTask}
+        editTask={editTask}
+      />));
 
   const filterList = FILTER_NAMES.map((name)=>(
     <FilterButton 
@@ -57,7 +67,7 @@ function App(props) {
       name={name}
       isPressed ={name === filter}
       setFilter= {setFilter} 
-      />
+    />
   ));
   
   function addTask(name) {
@@ -65,9 +75,11 @@ function App(props) {
     setTasks([...tasks, newTask]);
   }
 
-
   const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
   const headingText = `${taskList.length} ${tasksNoun} remaining!!`;
+
+  const listHeadingRef = useRef(null);
+
 
   return (
     <div className="todo--app">
@@ -79,12 +91,14 @@ function App(props) {
     {filterList}
     </div>
 
-    <h2 id="list-heading">{headingText}</h2>
+    <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
+      {headingText}</h2>
     
     <ul
       role="list"
       className="todo-list"
-      aria-labelledby="list-heading">
+      aria-labelledby="list-heading"
+    >
         {taskList}
     </ul>
   </div>
