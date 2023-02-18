@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 
 
 const Form = (props) => {
-    const [name, setName] = useState('Use hooks!');
+    const [name, setName] = useState("");
     
     function handleSubmit(e) {
         e.preventDefault();
