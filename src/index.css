@@ -126,3 +126,12 @@ body {
     color:thistle;
     transition-delay: 1ms;
   }
+  a{
+    text-decoration: none;
+    color: #646464;
+    position: relative;
+    top: 80px;
+  }
+  a:hover{
+    color: #a5a6bf;
+  }
