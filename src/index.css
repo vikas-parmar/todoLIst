@@ -100,7 +100,7 @@ body {
   }
   
   .stack-small {
-    width: fit-content;
+    width: 85vh;
     display: flex;
     gap: 10px;
     font-size: 18px;
@@ -134,4 +134,11 @@ body {
   }
   a:hover{
     color: #a5a6bf;
+  }
+  .github{
+    width: 50px;
+  }
+  .github:hover{
+    opacity: 0.8;
+    transition-duration: 100ms;
   }

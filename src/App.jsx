@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import FilterButton from "./Components/FilterButton";
 import Form from "./Components/Form";
-import Todo from "./Components/Todo"
+import Todo from "./Components/Todo";
+import gitHubLogo from "./Assets/githubLogo.svg"
 
 const FILTER_MAP = {
   All: () => true,
@@ -108,7 +109,7 @@ function App(props) {
     >
         {taskList}
     </ul>
-    <a href="https://github.com/viksa7111">@viksa7111</a>
+    <a href="https://github.com/viksa7111"><img src={gitHubLogo} className="github" /></a>
   </div>
   )
 }
