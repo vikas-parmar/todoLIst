@@ -10,9 +10,10 @@ const FILTER_MAP = {
   Active: (task) => !task.completed,
   Completed: (task) => task.completed
 };
+
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-function usePrevious(value) {
+const usePrevious = (value) => {
   const ref = useRef();
   useEffect(() => {
     ref.current = value;
@@ -20,58 +21,59 @@ function usePrevious(value) {
   return ref.current;
 }
 
-function App(props) {
+const App = (props) => {
+
   const [tasks, setTasks] = useState(props.tasks);
   const [filter, setFilter] = useState('All');
 
-  function toggleTaskCompleted(id) {
-    const updatedTasks = tasks.map((task)=>{
-      if(id === task.id){
-        return{...task, completed: !task.completed}
+  const toggleTaskCompleted = (id) => {
+    const updatedTasks = tasks.map((task) => {
+      if (id === task.id) {
+        return { ...task, completed: !task.completed }
       }
       return task;
     });
     setTasks(updatedTasks);
   }
-  
-  function deleteTask(id) {
+
+  const deleteTask = (id) => {
     const remainingTasks = tasks.filter((task) => id !== task.id);
-     setTasks(remainingTasks);
+    setTasks(remainingTasks);
   }
 
-  function editTask(id, newName) {
+  const editTask = (id, newName) => {
     const editedTaskList = tasks.map((task) => {
       if (id === task.id) {
-        return {...task, name: newName}
+        return { ...task, name: newName }
       }
       return task;
     });
     setTasks(editedTaskList);
   }
-  
+
   const taskList = tasks
     .filter(FILTER_MAP[filter])
     .map((task) => (
-      <Todo 
-        id={task.id} 
-        name={task.name} 
-        completed={task.completed} 
+      <Todo
+        id={task.id}
+        name={task.name}
+        completed={task.completed}
         key={task.id}
         toggleTaskCompleted={toggleTaskCompleted}
         deleteTask={deleteTask}
         editTask={editTask}
       />));
 
-  const filterList = FILTER_NAMES.map((name)=>(
-    <FilterButton 
-      key={name} 
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
       name={name}
-      isPressed ={name === filter}
-      setFilter= {setFilter} 
+      isPressed={name === filter}
+      setFilter={setFilter}
     />
   ));
-  
-  function addTask(name) {
+
+  const addTask = (name) => {
     const newTask = { id: `todo-${nanoid()}`, name, completed: false };
     setTasks([...tasks, newTask]);
   }
@@ -80,7 +82,7 @@ function App(props) {
   const headingText = `${taskList.length} ${tasksNoun} remaining!!`;
 
   const prevTaskLength = usePrevious(tasks.length);
-  
+
   const listHeadingRef = useRef(null);
 
   useEffect(() => {
@@ -91,26 +93,26 @@ function App(props) {
 
   return (
     <div className="todo--app">
-    <h1>TodoMatic</h1>
-    
-    <Form addTask={addTask} />
+      <h1>TodoMatic</h1>
 
-    <div className="filters-btn-group">
-    {filterList}
-    </div>
+      <Form addTask={addTask} />
 
-    <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
-      {headingText}</h2>
-    
-    <ul
-      role="list"
-      className="todo-list"
-      aria-labelledby="list-heading"
-    >
+      <div className="filters-btn-group">
+        {filterList}
+      </div>
+
+      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
+        {headingText}</h2>
+
+      <ul
+        role="list"
+        className="todo-list"
+        aria-labelledby="list-heading"
+      >
         {taskList}
-    </ul>
-    <a href="https://github.com/viksa7111"><img src={gitHubLogo} className="github" /></a>
-  </div>
+      </ul>
+      <a href="https://github.com/viksa7111"><img src={gitHubLogo} className="github" /></a>
+    </div>
   )
 }
 

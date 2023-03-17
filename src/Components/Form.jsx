@@ -1,21 +1,20 @@
-import React, {useState} from 'react'
-
-
+import React, { useState } from 'react'
 
 const Form = (props) => {
-    const [name, setName] = useState("");
-    
-    function handleSubmit(e) {
-        e.preventDefault();
-        if (name !== "") {
-          props.addTask(name);
-          setName("");
-        }};
+  const [name, setName] = useState("");
 
-    function handleChange(e) {
-        setName(e.target.value);
-      };
-          
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name !== "") {
+      props.addTask(name);
+      setName("");
+    }
+  };
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
+
   return (
     <form onSubmit={handleSubmit} className='todo--form'>
       <h2 className="label-wrapper">

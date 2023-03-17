@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-function usePrevious(value) {
+const usePrevious = (value) => {
   const ref = useRef();
   useEffect(() => {
     ref.current = value;
@@ -25,18 +25,18 @@ const Todo = (props) => {
       editButtonRef.current.focus();
     }
   }, [wasEditing, isEditing]);
-  
-  function handleChange(e) {
+
+  const handleChange = (e) => {
     setNewName(e.target.value);
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     props.editTask(props.id, newName);
     setNewName("");
     setEditing(false);
   }
-    
+
   const editingTemplate = (
     <form className="stack-small" onSubmit={handleSubmit} >
       <div className="form-group">
@@ -68,6 +68,7 @@ const Todo = (props) => {
       </div>
     </form>
   );
+
   const viewTemplate = (
     <div className="stack-small">
       <div>
