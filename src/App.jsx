@@ -111,7 +111,7 @@ const App = (props) => {
       >
         {taskList}
       </ul>
-      <a href="https://github.com/viksa7111"><img src={gitHubLogo} className="github" /></a>
+      <a href="https://github.com/vikas-parmar"><img src={gitHubLogo} className="github" /></a>
     </div>
   )
 }
