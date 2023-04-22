@@ -12,7 +12,7 @@ body {
     background-color: #bdbe9f;
   }
   h1 {
-      color: black;
+      color: white;
     font-size: 3.2em;
     line-height: 1.1;
   }
@@ -70,6 +70,7 @@ body {
     gap: 10px;
   }
   .toggle-btn {
+    color: white;
     margin-left: 8px;
     font-weight: 800;
     font-size: 14px;
@@ -81,7 +82,6 @@ body {
   }
   .toggle-btn:hover {
     border: 2px solid #646464;
-    background-color: #242424;
   }
   
   #list-heading {
@@ -100,9 +100,9 @@ body {
   }
   
   .stack-small {
-    width: 85vw;
+    width: 68vw;
     display: flex;
-          justify-content: space-between;
+    justify-content: space-between;
     gap: 10px;
     font-size: 18px;
   }
@@ -118,7 +118,7 @@ body {
     transition: border-color 0.25s;
   }
   .todo-input-btn:hover {
-    background-color: #1a1a1a;
+      border: 2px solid #646464;
   }
   
   a{
