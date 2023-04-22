@@ -1,5 +1,5 @@
 body {
-    max-width: 100vh;
+    max-width: 100vw;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
@@ -8,13 +8,13 @@ body {
     line-height: 24px;
     font-weight: 400;
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    color: rgba(47, 34, 34, 0.87);
+    background-color: #bdbe9f;
   }
   h1 {
     font-size: 3.2em;
     line-height: 1.1;
-    border-bottom: 10px solid #646cff;
+    border-bottom: 10px solid #3b3d57;
     border-radius: 50%;
   }
   li {
@@ -30,7 +30,7 @@ body {
     top: 10px;
     font-size: 20px;
     font-weight: 500;
-    border-bottom: 2px solid #646cff;
+    border-bottom: 2px solid #3b3d57;
     outline: none;
   }
   
@@ -52,15 +52,15 @@ body {
     margin-left: 8px;
     border: 1px solid;
     padding: 0.4em;
-    background-color: #1a1a1a;
+    background-color: #3b3d57;
     cursor: pointer;
     transition: border-color 0.25s;
   }
   .btn--primary:hover {
-    border: 1px solid #646464;
+    border: 1px solid #3b3d57;
   }
   .todo--form {
-    border: 3px double #646cff;
+    border: 3px double #3b3d57;
     padding: 10px;
   }
   .filters-btn-group {
@@ -75,7 +75,7 @@ body {
     font-size: 14px;
     border: 1px solid transparent;
     padding: 0.8em;
-    background-color: #1a1a1a;
+    background-color: #3b3d57;
     cursor: pointer;
     transition: border-color 0.25s;
   }
@@ -87,12 +87,12 @@ body {
   #list-heading {
     text-transform: uppercase;
     font-size: 18px;
-    border-bottom: 1px solid #646cff;
-    border-top: 1px solid #646cff;
+    border-bottom: 1px solid #3b3d57;
+    border-top: 1px solid #3b3d57;
   }
   
   .todo-list {
-    border: 1px solid #646cff;
+    border: 1px solid #3b3d57;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -110,30 +110,23 @@ body {
     border: 1px solid transparent;
     padding: 0.3em;
     font-weight: 200;
-    background-color: #646464;
+    background-color: #3b3d57;
     border-radius: 3px;
     cursor: pointer;
     transition: border-color 0.25s;
   }
   .todo-input-btn:hover {
-    background-color: #646cff;
+    background-color: #1a1a1a;
   }
   
-  .me{
-    color: #1a1a1a;
-  }
-  .me:hover{
-    color:thistle;
-    transition-delay: 1ms;
-  }
   a{
     text-decoration: none;
-    color: #646464;
+    color: #0d0909;
     position: relative;
     top: 80px;
   }
   a:hover{
-    color: #a5a6bf;
+    color: #191b3e;
   }
   .github{
     width: 50px;
