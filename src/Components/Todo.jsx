@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from "react";
 
 const usePrevious = (value) => {
   const ref = useRef();
@@ -6,11 +6,11 @@ const usePrevious = (value) => {
     ref.current = value;
   });
   return ref.current;
-}
+};
 
 const Todo = (props) => {
   const [isEditing, setEditing] = useState(false);
-  const [newName, setNewName] = useState('');
+  const [newName, setNewName] = useState("");
 
   const editFieldRef = useRef(null);
   const editButtonRef = useRef(null);
@@ -28,80 +28,78 @@ const Todo = (props) => {
 
   const handleChange = (e) => {
     setNewName(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.editTask(props.id, newName);
     setNewName("");
     setEditing(false);
-  }
+  };
 
   const editingTemplate = (
-    <form className="stack-small" onSubmit={handleSubmit} >
-      <div className="form-group">
-        <label className="todo-label" htmlFor={props.id}>
-          New Name for {props.name} :
-        </label>
+    <form className="columns-1 flex justify-between" onSubmit={handleSubmit}>
+      <div className="flex gap-1">
+        <label htmlFor={props.id}>New Name for {props.name}</label>
         <input
           id={props.id}
-          className="todo-text"
+          className=" w-80 outline-0 border-4  border-indigo-500 mx-1"
           type="text"
           value={newName}
           onChange={handleChange}
           ref={editFieldRef}
         />
       </div>
-      <div className="btn-group">
+      <div className="flex gap-2">
         <button
           type="button"
-          className="todo-input-btn"
+          className="border-b-4 border-pink-500"
           onClick={() => setEditing(false)}
         >
           Cancel
-          <span className="visually-hidden">renaming {props.name}</span>
+          <span className="hidden">renaming {props.name}</span>
         </button>
-        <button type="submit" className="todo-input-btn">
+        <button type="submit" className="border-b-4 border-indigo-500">
           Save
-          <span className="visually-hidden">new name for {props.name}</span>
+          <span className="hidden">new name for {props.name}</span>
         </button>
       </div>
     </form>
   );
 
   const viewTemplate = (
-    <div className="stack-small">
-      <div>
+    <div className="columns-1 flex justify-between">
+      <div className="my-1">
         <input
           id={props.id}
           type="checkbox"
           defaultChecked={props.completed}
           onChange={() => props.toggleTaskCompleted(props.id)}
         />
-        <label className="todo-label" htmlFor={props.id}>
+        <label className="mx-2" htmlFor={props.id}>
           {props.name}
         </label>
       </div>
-      <div className="btn-group">
+      <div className="flex gap-2">
         <button
           type="button"
-          className="todo-input-btn"
+          className="border-b-4 border-indigo-500"
           onClick={() => setEditing(true)}
           ref={editButtonRef}
         >
-          Edit <span className="visually-hidden">{props.name}</span>
+          Edit <span className="hidden">{props.name}</span>
         </button>
         <button
           type="button"
-          className="todo-input-btn"
+          className="border-b-4 border-pink-500"
           onClick={() => props.deleteTask(props.id)}
         >
-          Delete <span className="visually-hidden">{props.name}</span>
+          Delete <span className="hidden">{props.name}</span>
         </button>
       </div>
     </div>
   );
-  return <li className="todo">{isEditing ? editingTemplate : viewTemplate}</li>;
-}
+  return <li>{isEditing ? editingTemplate : viewTemplate}</li>;
+};
 
 export default Todo;
