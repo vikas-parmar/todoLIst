@@ -124,7 +124,6 @@ const App = (props) => {
         <h2 className="columns-1 text-center py-2 font-serif text-lg font-bold text-pink-600" id="list-heading" tabIndex="-1" ref={listHeadingRef}>
           {headingText}
         </h2>
-
         <ul role="list" className="todo-list" aria-labelledby="list-heading">
           {taskList}
         </ul>
